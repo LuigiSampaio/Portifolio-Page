@@ -20,8 +20,30 @@ if(navClose) {
 const navLink = document.querySelectorAll('.nav__link');
 
 const linkAction = () => {
-  const navMenu = document.getElementById('nav-menu')
+  const navMenu = document.getElementById('nav-menu');
   // When we click on each nav__link, we remove the show-menu class
-  navMenu.classList.remove('show-menu')
+  navMenu.classList.remove('show-menu');
 }
 navLink.forEach(n => n.addEventListener('click', linkAction));
+
+
+
+// Skills Accordion
+const skillsContent = document.getElementsByClassName('skills__content');
+const skillsHeader = document.querySelectorAll('.skills__header');
+
+function toggleSkills ()  {
+  let itemCLass = this.parentNode.className;
+
+  for( i = 0;  i < skillsContent.length; i++) {
+    skillsContent[i].className = 'skills__content skills__close';
+  }
+
+  if(itemCLass === 'skills__content skills__close'){
+    this.parentNode.className = 'skills__content skills__open';
+  }
+};
+
+skillsHeader.forEach((el) => {
+  el.addEventListener('click', toggleSkills);
+});
